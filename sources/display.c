@@ -6,50 +6,60 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 11:33:20 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/04 12:59:17 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/04 15:16:20 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "puissance_4.h"
 
-void	display_grid(t_p4 *p4)
+static void		display_column_nbrs(t_p4 *p4)
 {
-	int		x;
-	int		y;
-	int		tmp;
+	p4->y = 1;
+	ft_putstr("  ");
+	while (p4->y <= p4->columns)
+	{
+		ft_putnbr(p4->y);
+		if (p4->y + 1 <= p4->columns && p4->y < 10)
+			ft_putstr("   ");
+		else if (p4->y + 1 <= p4->columns)
+			ft_putstr("  ");
+		++p4->y;
+	}
+	if (p4->y <= 10)
+		ft_putendl("  ");
+	else
+		ft_putendl(" ");
+}
 
-	x = 0;
-	tmp = (int)(ft_strlen(p4->grid[x]) * 2 + 1);
-	ft_putchar('X');
-	while (tmp)
+static void		display_grid_lines(t_p4 *p4)
+{
+	p4->y = 0;
+	while (p4->y < p4->columns)
 	{
-		ft_putchar('=');
-		--tmp;
+		ft_putstr("+---");
+		++p4->y;
 	}
-	ft_putstr("\n");
-	while (p4->grid[x])
+	ft_putendl("+");
+}
+
+void			display_grid(t_p4 *p4)
+{
+	display_column_nbrs(p4);
+	p4->x = 0;
+	while (p4->x < p4->lines)
 	{
-		y = 0;
-		ft_putstr("||");
-		while (p4->grid[x][y])
+		display_grid_lines(p4);
+		p4->y = 0;
+		while (p4->y < p4->columns)
 		{
-			ft_putchar('a');
-			if (p4->grid[x][y + 1])
-				ft_putchar('|');
-			++y;
+			ft_putstr("| ");
+			ft_putchar(p4->grid[p4->x][p4->y]);
+			ft_putstr(" ");
+			++p4->y;
 		}
-		ft_putstr("||\n");
-		++x;
+		ft_putendl("|");
+		++p4->x;
 	}
-	y = 0;
-	tmp = (int)(ft_strlen(p4->grid[x]));
-	ft_putstr("==");
-	while (y < tmp)
-	{
-		ft_putnbr(y);
-		if (y == tmp -1)
-			ft_putchar('=');
-		++y;
-	}
-	ft_putstr("==\n");
+	display_grid_lines(p4);
+	display_column_nbrs(p4);
 }
