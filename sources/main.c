@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 22:46:38 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/04 14:44:17 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/04 15:18:25 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static t_p4		*init_p4(t_p4 *p4, char **argv)
 
 	tmp = 0;
 	if (!(p4 = ft_memalloc(sizeof(t_p4))) || !(p4->grid =
-			ft_memalloc(sizeof(char**) * (unsigned long)(ft_atoi(argv[1]) + 1))))
+		ft_memalloc(sizeof(char**) * (unsigned long)(ft_atoi(argv[1]) + 1))))
 		return (NULL);
 	p4->lines = ft_atoi(argv[1]);
 	p4->columns = ft_atoi(argv[2]);
@@ -41,7 +41,7 @@ static t_p4		*init_p4(t_p4 *p4, char **argv)
 	{
 		if (!(p4->grid[tmp] = ft_strnew((size_t)p4->columns)))
 			return (NULL);
-		p4->grid[tmp] = ft_strfill(p4->grid[tmp], ' ', (size_t)p4->columns);
+		p4->grid[tmp] = ft_strfill(p4->grid[tmp], 'X', (size_t)p4->columns);
 		++tmp;
 	}
 	p4->x = 0;
