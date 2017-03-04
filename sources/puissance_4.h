@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 22:47:23 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/04 16:40:48 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/04 18:26:24 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,31 @@
 # define PUISSANCE_4_H
 
 # include "../libft/libft.h"
+# include "time.h"
+
+enum e_result
+{
+	J1_PLAYING,
+	J2_PLAYING,
+	DRAW,
+	J1,
+	J2,
+};
 
 typedef struct	s_p4
 {
-	char		**grid;
-	int			x;
-	int			y;
-	int			columns;
-	int			lines;
-	int			j1;
-	int			j2;
-	int			scorej1;
-	int			scorej2
-	int			pad_0;
-}				t_p4;
+	char			**grid;
+	int				x;
+	int				y;
+	int				columns;
+	int				lines;
+	int				j1;
+	int				j2;
+	int				scorej1;
+	int				scorej2;
+	enum e_result	res;
+	int				rerun;
+}					t_p4;
 
 void		game(t_p4 *p4);
 void		display_grid(t_p4 *p4);
