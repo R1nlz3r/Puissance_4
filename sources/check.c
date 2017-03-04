@@ -23,14 +23,37 @@ static int		check_draw(t_p4 *p4)
 	return (0);
 }
 
-static int		check_win(tp4 *p4)
+static int		check_win(t_p4 *p4)
 {
-	int x;
-	int y;
+	int		x;
+	int		y;
+	int		is_win;
 
-	x = p4->columns;
-	y = p4->lines;
-
+	x = (p4->columns - 3);
+	y = (p4->lines - 3);
+	is_win = 0;
+	while (y > 2 && !is_win)
+		while (x > 2 && !is_win)
+		{
+			if ((p4->grid[x][y] == 'X' && p4->grid[x + 1][y] == 'X' && \
+			p4->grid[x + 2][y] == 'X' && p4->grid[x + 3][y] == 'X') || \
+			(p4->grid[x][y] == 'X' && p4->grid[x - 1][y] == 'X' && \
+			p4->grid[x - 2][y] == 'X' && p4->grid[x - 3][y] == 'X') || \
+			(p4->grid[x][y] == 'X' && p4->grid[x][y + 1] == 'X' && \
+			p4->grid[x][y + 2] == 'X' && p4->grid[x][y + 3] == 'X') || \
+			(p4->grid[x][y] == 'X' && p4->grid[x - 1][y - 1] && \
+			p4->grid[x - 2][y - 2] && p4->grid[x - 3][y - 3]) || \
+			(p4->grid[x][y] == 'X' && p4->grid[x - 1][y + 1] && \
+			p4->grid[x - 2][y + 2] && p4->grid[x - 3][y + 3]) || \
+			(p4->grid[x][y] == 'X' && p4->grid[x + 1][y - 1] && \
+			p4->grid[x + 2][y - 2] && p4->grid[x + 3][y - 3]) || \
+			(p4->grid[x][y] == 'X' && p4->grid[x + 1][y + 1] && \
+			p4->grid[x + 2][y + 2] && p4->grid[x + 3][y + 3]))
+				is_win = 1;
+			x++;
+		}
+		y--;
+	return (is_win);
 }
 
 int		check_finish(t_p4 *p4)
