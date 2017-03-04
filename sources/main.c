@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 22:46:38 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/04 15:18:25 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/04 16:41:20 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,15 @@ static t_p4		*init_p4(t_p4 *p4, char **argv)
 	{
 		if (!(p4->grid[tmp] = ft_strnew((size_t)p4->columns)))
 			return (NULL);
-		p4->grid[tmp] = ft_strfill(p4->grid[tmp], 'X', (size_t)p4->columns);
+		p4->grid[tmp] = ft_strfill(p4->grid[tmp], ' ', (size_t)p4->columns);
 		++tmp;
 	}
 	p4->x = 0;
 	p4->y = 0;
+	p4->j1 = ft_atoi(argv[3]);
+	p4->j2 = ft_atoi(argv[4]);
+	p4->scorej1 = 0;
+	p4->scorej2 = 0;
 	return (p4);
 }
 
@@ -62,14 +66,10 @@ int				main(int argc, char **argv)
 		|| !(ft_atoi(argv[4]) == 1 || ft_atoi(argv[4]) == 2))
 	{
 		ft_putstr("usage: puissance4 [5 < lines < 100] [6 < columns < 100] ");
-		ft_putstr("[J1: Humain - 1 / AI - 2] [J2: Humain - 1 / AI - 2] ");
-		ft_putendl("[J3+...]");
+		ft_putendl("[J1: Humain - 1 / AI - 2] [J2: Humain - 1 / AI - 2]");
 		return (-1);
 	}
 	p4 = init_p4(p4, argv);
-	p4->lines = ft_atoi(argv[1]);
-	p4->columns = ft_atoi(argv[2]);
-	display_grid(p4);
 	del_p4(p4);
 	return (0);
 }
