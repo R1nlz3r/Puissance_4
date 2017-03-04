@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 22:47:23 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/04 12:54:23 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/04 14:04:49 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ typedef struct	s_p4
 	char		**grid;
 	int			x;
 	int			y;
+	int			columns;
+	int			lines;
 }				t_p4;
 
 void	display_grid(t_p4 *p4);
