@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 22:46:38 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/04 16:41:20 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/04 18:32:40 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static t_p4		*init_p4(t_p4 *p4, char **argv)
 	p4->j2 = ft_atoi(argv[4]);
 	p4->scorej1 = 0;
 	p4->scorej2 = 0;
+	p4->rerun = 1;
 	return (p4);
 }
 
@@ -58,9 +59,7 @@ int				main(int argc, char **argv)
 	t_p4	*p4;
 
 	p4 = NULL;
-	(void)argc;
-	if (!argv[1] || !argv[2] || !argv[3] || !argv[4]
-		|| ft_atoi(argv[1]) < 6 || ft_atoi(argv[1]) > 99
+	if (argc != 5 || ft_atoi(argv[1]) < 6 || ft_atoi(argv[1]) > 99
 		|| ft_atoi(argv[2]) < 7 || ft_atoi(argv[2]) > 99
 		|| !(ft_atoi(argv[3]) == 1 || ft_atoi(argv[3]) == 2)
 		|| !(ft_atoi(argv[4]) == 1 || ft_atoi(argv[4]) == 2))
