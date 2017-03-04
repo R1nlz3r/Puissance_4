@@ -6,11 +6,33 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 11:33:20 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/04 15:16:20 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/04 19:37:54 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "puissance_4.h"
+
+void			display_score(t_p4 *p4)
+{
+	ft_putendl("\n*************************************");
+	if (p4->res == DRAW)
+	ft_putendl("**              Draw !             **");
+	else if (p4->res == J1 && ++(p4->scorej1))
+	ft_putendl("**            J1 wins !            **");
+	else if (p4->res == J2 && ++(p4->scorej2))
+	ft_putendl("**            J2 wins !            **");
+	ft_putstr("**    Score : J1 - ");
+	ft_putnbr(p4->scorej1);
+	if (p4->scorej1 < 10)
+		ft_putchar(' ');
+	ft_putstr(" / J2 - ");
+	ft_putnbr(p4->scorej2);
+	if (p4->scorej2 < 10)
+		ft_putendl("     **");
+	else
+		ft_putendl("    **");
+	ft_putendl("*************************************");
+}
 
 static void		display_column_nbrs(t_p4 *p4)
 {
