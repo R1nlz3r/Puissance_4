@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 22:47:23 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/04 18:26:24 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/04 18:59:05 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ typedef struct	s_p4
 
 void		game(t_p4 *p4);
 void		display_grid(t_p4 *p4);
+void		display_score(t_p4 *p4);
 
 #endif
