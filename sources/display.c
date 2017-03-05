@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 11:33:20 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/05 10:11:41 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/05 20:44:49 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void			display_score(t_p4 *p4)
 {
 	ft_putendl("\n*************************************");
 	if (p4->res == DRAW)
-	ft_putendl("**              Draw !             **");
+		ft_putendl("**              Draw !             **");
 	else if (p4->res == J1 && ++(p4->scorej1))
-	ft_putendl("**            \033[31mJ1 gagne !\033[0m           **");
+		ft_putendl("**            \033[31mJ1 gagne !\033[0m           **");
 	else if (p4->res == J2 && ++(p4->scorej2))
-	ft_putendl("**            \033[33mJ2 gagne !\033[0m           **");
+		ft_putendl("**            \033[33mJ2 gagne !\033[0m           **");
 	ft_putstr("**    Score : \033[31mJ1\033[0m - ");
 	ft_putnbr(p4->scorej1);
 	if (p4->scorej1 < 10)

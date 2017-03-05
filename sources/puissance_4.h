@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 22:47:23 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/05 20:27:30 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/05 20:52:56 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../libft/libft.h"
 # include "time.h"
 
-enum e_result
+enum	e_result
 {
 	J1_PLAYING,
 	J2_PLAYING,
@@ -25,13 +25,13 @@ enum e_result
 	J2,
 };
 
-enum e_players
+enum	e_players
 {
 	HUMAN,
 	AI,
 };
 
-typedef struct	s_p4
+typedef struct		s_p4
 {
 	char			**grid;
 	int				x;
@@ -46,13 +46,13 @@ typedef struct	s_p4
 	int				rerun;
 }					t_p4;
 
-int			game(t_p4 *p4);
-int			ai_plays(t_p4 *p4);
-int			check_valid_input(t_p4 *p4, int column);
-void		put_on_map(t_p4 *p4, int column);
-void		display_grid(t_p4 *p4);
-void		check_end_game(t_p4 *p4);
-void		display_score(t_p4 *p4);
-void		clear_grid(t_p4 *p4);
+int					game(t_p4 *p4);
+int					ai_plays(t_p4 *p4);
+int					check_valid_input(t_p4 *p4, int column);
+void				put_on_map(t_p4 *p4, int column);
+void				display_grid(t_p4 *p4);
+void				check_end_game(t_p4 *p4);
+void				display_score(t_p4 *p4);
+void				clear_grid(t_p4 *p4);
 
 #endif

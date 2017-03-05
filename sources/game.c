@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 15:55:52 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/05 20:26:44 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/05 20:55:45 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static void		srch_first_player(t_p4 *p4)
 		p4->res = J1_PLAYING;
 }
 
-int		game(t_p4 *p4)
+int				game(t_p4 *p4)
 {
 	while (p4->rerun)
 	{
@@ -84,9 +84,12 @@ int		game(t_p4 *p4)
 		while (p4->res == J1_PLAYING || p4->res == J2_PLAYING)
 		{
 			display_grid(p4);
-			if (((p4->res == J1_PLAYING && p4->j1 == HUMAN) || (p4->res == J2_PLAYING && p4->j2 == HUMAN)) && j_plays(p4) == -1)
+			if (((p4->res == J1_PLAYING && p4->j1 == HUMAN) || \
+						(p4->res == J2_PLAYING && p4->j2 == HUMAN)) && \
+					j_plays(p4) == -1)
 				return (-1);
-			else if ((p4->res == J1_PLAYING && p4->j1 == AI) || (p4->res == J2_PLAYING && p4->j2 == AI))
+			else if ((p4->res == J1_PLAYING && p4->j1 == AI) || \
+					(p4->res == J2_PLAYING && p4->j2 == AI))
 				put_on_map(p4, ai_plays(p4));
 			check_end_game(p4);
 			if (p4->res == J1_PLAYING)
