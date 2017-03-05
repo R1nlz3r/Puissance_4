@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 22:46:38 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/05 11:09:14 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/05 20:27:03 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void		del_p4(t_p4 *p4)
 	int		tmp;
 
 	tmp = 0;
-	while (tmp <= p4->lines)
+	while (tmp < p4->lines)
 	{
 		ft_strdel(&p4->grid[tmp]);
 		++tmp;
@@ -43,11 +43,11 @@ static t_p4		*init_p4(t_p4 *p4, char **argv)
 
 	tmp = 0;
 	if (!(p4 = ft_memalloc(sizeof(t_p4))) || !(p4->grid =
-		ft_memalloc(sizeof(char**) * (unsigned long)(ft_atoi(argv[1]) + 1))))
+		ft_memalloc(sizeof(char**) * (unsigned long)ft_atoi(argv[1]))))
 		return (NULL);
 	p4->lines = ft_atoi(argv[1]);
 	p4->columns = ft_atoi(argv[2]);
-	p4->grid[p4->lines + 1] = NULL;
+	p4->grid[p4->lines] = NULL;
 	while (tmp < p4->lines)
 	{
 		if (!(p4->grid[tmp] = ft_strnew((size_t)p4->columns)))
@@ -57,11 +57,15 @@ static t_p4		*init_p4(t_p4 *p4, char **argv)
 	}
 	p4->x = 0;
 	p4->y = 0;
-	p4->j1 = ft_atoi(argv[3]);
-	p4->j2 = ft_atoi(argv[4]);
 	p4->scorej1 = 0;
 	p4->scorej2 = 0;
 	p4->res = DRAW;
+	p4->j1 = HUMAN;
+	p4->j2 = HUMAN;
+	if (ft_atoi(argv[3]) == 2)
+		p4->j1 = AI;
+	if (ft_atoi(argv[4]) == 2)
+		p4->j2 = AI;
 	p4->rerun = 1;
 	return (p4);
 }
