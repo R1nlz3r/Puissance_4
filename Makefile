@@ -6,7 +6,7 @@
 #    By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/03 22:17:21 by mapandel          #+#    #+#              #
-#    Updated: 2017/03/05 00:38:50 by mapandel         ###   ########.fr        #
+#    Updated: 2017/03/05 20:28:02 by mapandel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ CFLAGS = 	-Wall -Wextra -Werror -Weverything
 
 SRC =		sources/main.c \
 			sources/game.c \
+			sources/ai.c \
 			sources/check_n_put_on_map.c \
 			sources/check_end_game.c \
 			sources/display.c \
@@ -76,4 +77,4 @@ clean:
 
 fclean: clean
 	@echo "$(RED)--::Executable and Library Delection::--$(DEF)"
-	@rm -rf $(NAME) #$(LIBPATH)
+	@rm -rf $(NAME) $(LIBPATH)
