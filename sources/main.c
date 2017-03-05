@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 22:46:38 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/04 18:32:40 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/05 05:28:17 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static t_p4		*init_p4(t_p4 *p4, char **argv)
 	p4->j2 = ft_atoi(argv[4]);
 	p4->scorej1 = 0;
 	p4->scorej2 = 0;
+	p4->res = DRAW;
 	p4->rerun = 1;
 	return (p4);
 }
@@ -69,6 +70,8 @@ int				main(int argc, char **argv)
 		return (-1);
 	}
 	p4 = init_p4(p4, argv);
+	if (game(p4) == -1)
+		return (-1);
 	del_p4(p4);
 	return (0);
 }
