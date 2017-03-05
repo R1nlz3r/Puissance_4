@@ -6,22 +6,33 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 15:55:52 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/04 18:17:18 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/05 07:06:39 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "puissance_4.h"
 
-//entrée stdrt -> piece dans la grille
-
-static void		j1_plays(t_p4 *p4)
+static int		j_plays(t_p4 *p4)
 {
-	(void)p4;
-}
+	char	*buf;
 
-static void		j2_plays(t_p4 *p4)
-{
-	(void)p4;
+	buf = ft_strnew(1000000);
+	if (p4->res == J1_PLAYING)
+		ft_putendl("\n> Joueur 1 : À toi de jouer");
+	else if (p4->res == J2_PLAYING)
+		ft_putendl("\n> Joueur 2 : À toi de jouer");
+	if (read(0, buf, 1000000) == -1)
+		return (-1);
+	while (check_valid_input(p4, ft_atoi(buf) - 1) == -1)
+	{
+		ft_putendl("Input invalide, réesaye.");
+		ft_strclr(buf);
+		if (read(0, buf, 1000000) == -1 || buf[999999])
+			return (-1);
+	}
+	put_on_map(p4, ft_atoi(buf) - 1);
+	ft_strdel(&buf);
+	return (0);
 }
 
 static void		srch_first_player(t_p4 *p4)
@@ -40,24 +51,27 @@ static void		srch_first_player(t_p4 *p4)
 		p4->res = J1_PLAYING;
 }
 
-void		game(t_p4 *p4)
+int		game(t_p4 *p4)
 {
 	while (p4->rerun)
 	{
 		srch_first_player(p4);
 		while (p4->res == J1_PLAYING || p4->res == J2_PLAYING)
 		{
-			if (p4->res == J1_PLAYING)
-				j1_plays(p4);
-			else if (p4->res == J2_PLAYING)
-				j2_plays(p4);
-			//check
+			display_grid(p4);
+			if (j_plays(p4) == -1)
+				return (-1);
+			display_grid(p4);
+			check_end_game(p4);
 			if (p4->res == J1_PLAYING)
 				p4->res = J2_PLAYING;
 			else if (p4->res == J2_PLAYING)
 				p4->res = J1_PLAYING;
 		}
-		//afficher le résultat, highlight + score
+		display_score(p4);
+		//hightlight le résultat
 		//demande de rerun (si oui -> reset)
+		p4->rerun = 0;
 	}
+	return (0);
 }
