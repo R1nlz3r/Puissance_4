@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 11:33:20 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/05 06:47:18 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/05 10:11:41 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void			display_score(t_p4 *p4)
 	if (p4->res == DRAW)
 	ft_putendl("**              Draw !             **");
 	else if (p4->res == J1 && ++(p4->scorej1))
-	ft_putendl("**            J1 wins !            **");
+	ft_putendl("**            \033[31mJ1 gagne !\033[0m           **");
 	else if (p4->res == J2 && ++(p4->scorej2))
-	ft_putendl("**            J2 wins !            **");
-	ft_putstr("**    Score : J1 - ");
+	ft_putendl("**            \033[33mJ2 gagne !\033[0m           **");
+	ft_putstr("**    Score : \033[31mJ1\033[0m - ");
 	ft_putnbr(p4->scorej1);
 	if (p4->scorej1 < 10)
 		ft_putchar(' ');
-	ft_putstr(" / J2 - ");
+	ft_putstr(" / \033[33mJ2\033[0m - ");
 	ft_putnbr(p4->scorej2);
 	if (p4->scorej2 < 10)
 		ft_putendl("     **");
@@ -76,7 +76,12 @@ void			display_grid(t_p4 *p4)
 		while (p4->y < p4->columns)
 		{
 			ft_putstr("| ");
+			if (p4->grid[p4->x][p4->y] == 'X')
+				ft_putstr("\033[31m");
+			else if (p4->grid[p4->x][p4->y] == 'O')
+				ft_putstr("\033[33m");
 			ft_putchar(p4->grid[p4->x][p4->y]);
+			ft_putstr("\033[0m");
 			ft_putstr(" ");
 			++p4->y;
 		}
