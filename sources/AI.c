@@ -1,5 +1,33 @@
 #include <Puissance_4.h>
 
+static int both_sides(t_p4 *p4,int s1, int s2, int y, int c, int n)
+{
+	int tn;
+	int cpt;
+
+	while (cpt < n || n < 0)
+	{
+		tn = 0;
+		cpt = 0;
+		while (p4->grid[p4->x + (s1 * tn)][y + (s2 * tn)] == c && tn < n)
+		{
+			tn++;
+			cpt++;
+		}
+		tn = 0;
+		while (p4->grid[p4->x - (s1 * tn)][y - (s2 * tn)] == c && tn < n)
+		{
+			tn++;
+			cpt++;
+		}
+		n--;
+	}
+	if (cpt >= n)
+		return (1);
+	else 
+		return (0);
+}
+
 static int		check_arround(t_p4 *p4, int y, int win, int n)
 {
 	char c;
@@ -13,13 +41,11 @@ static int		check_arround(t_p4 *p4, int y, int win, int n)
 		c = 'X';
 	else
 		c = 'O';
-	while (n > cpt)
-	{
-		tmp_n = n;
-		cpt = 0;;
-		while (p4->grid[p4->x + tmp_n++][y] == 'c' && tmp_n < n)
-			cpt++;
-	}
+	if (both_sides(p4, 1, 0, y, c, n) || both_sides(p4, 0, 1, y, c, n) ||\
+	both_sides(p4, 1, 1, y, c, n) || both_sides(p4, -1, 1, y, c, n))
+		return (1);
+	else
+		return (0);
 }
 
 static int		search_lower(t_p4 *p4)
@@ -44,8 +70,16 @@ static int		compute_score(t_p4 *p4)
 		return (-100);
 	else
 	{
-		if (check_wol(p4, y, 1) || (check_wol(p4, y - 1, 0)))
+		if (check_arround(p4, y, 1, 3) || (check_arround(p4, y - 1, 0, 3)))
 			score = 100;
+		if (check_arround(p4, y, 1, 2))
+			score = score + 2;
+		if (check_arround(p4, y - 1, 0, 2))
+			score = score - 2;
+		if (check_arround(p4, y, 1, 1))
+			score = score + 1;
+		if (check_arround(p4, y - 1, 0, 1))
+			score = score - 1;
 		return (score);
 	}
 }
