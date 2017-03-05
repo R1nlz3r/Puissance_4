@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 20:58:21 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/05 09:17:06 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/05 10:29:41 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 static int		check_draw(t_p4 *p4)
 {
-	int tmpx;
-
-	tmpx = p4->columns - 1;
-	while (p4->grid[0][tmpx] != ' ' && tmpx >= 0)
-		--tmpx;
-	if (!tmpx)
+	p4->x = 0;
+	p4->y = 0;
+	while (p4->y < p4->columns && p4->grid[p4->x][p4->y] != ' ')
+		++p4->y;
+	if (!(p4->y < p4->columns))
 		return (1);
 	return (0);
 }
