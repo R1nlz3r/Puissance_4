@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 22:46:38 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/05 10:50:58 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/05 11:09:14 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void			clear_grid(t_p4 *p4)
 	p4->y = 0;
 	while (p4->x < p4->lines)
 	{
-		ft_strfill(p4->grid[p4->x], ' ', (size_t)(p4->columns - 1));
+		ft_strfill(p4->grid[p4->x], ' ', (size_t)(p4->columns));
 		++p4->x;
 	}
 }
