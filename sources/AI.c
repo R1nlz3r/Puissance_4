@@ -5,10 +5,10 @@ static int both_sides(t_p4 *p4,int s1, int s2, int y, int c, int n)
 	int tn;
 	int cpt;
 
+	cpt = 0;
 	while (cpt < n || n < 0)
 	{
 		tn = 0;
-		cpt = 0;
 		while (p4->grid[p4->x + (s1 * tn)][y + (s2 * tn)] == c && tn < n)
 		{
 			tn++;
@@ -32,7 +32,6 @@ static int		check_arround(t_p4 *p4, int y, int win, int n)
 {
 	char c;
 	int cpt;
-	int tmp_n;
 
 	cpt = 0;
 	if (y < 0)
