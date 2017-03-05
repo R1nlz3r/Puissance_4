@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 20:58:21 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/05 10:29:41 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/05 20:26:15 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,9 @@ static int		check_j_win(t_p4 *p4)
 {
 	char	c;
 
+	c = 'O';
 	if (p4->res == J1_PLAYING)
 		c = 'X';
-	else
-		c = 'O';
 	p4->x = 0;
 	while (p4->x < p4->lines)
 	{
