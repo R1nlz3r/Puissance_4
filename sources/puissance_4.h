@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 22:47:23 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/04 18:59:05 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/05 06:32:29 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ typedef struct	s_p4
 	char			**grid;
 	int				x;
 	int				y;
-	int				columns;
 	int				lines;
+	int				columns;
 	int				j1;
 	int				j2;
 	int				scorej1;
@@ -40,8 +40,11 @@ typedef struct	s_p4
 	int				rerun;
 }					t_p4;
 
-void		game(t_p4 *p4);
+int			game(t_p4 *p4);
+int			check_valid_input(t_p4 *p4, int column);
+void		put_on_map(t_p4 *p4, int column);
 void		display_grid(t_p4 *p4);
+void		check_end_game(t_p4 *p4);
 void		display_score(t_p4 *p4);
 
 #endif
