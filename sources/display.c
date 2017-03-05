@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 11:33:20 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/04 19:37:54 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/05 06:47:18 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ static void		display_grid_lines(t_p4 *p4)
 
 void			display_grid(t_p4 *p4)
 {
+	ft_putstr("\033c");
 	display_column_nbrs(p4);
 	p4->x = 0;
 	while (p4->x < p4->lines)
