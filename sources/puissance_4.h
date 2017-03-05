@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 22:47:23 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/05 10:47:23 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/05 20:27:30 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ enum e_result
 	J2,
 };
 
+enum e_players
+{
+	HUMAN,
+	AI,
+};
+
 typedef struct	s_p4
 {
 	char			**grid;
@@ -32,8 +38,8 @@ typedef struct	s_p4
 	int				y;
 	int				lines;
 	int				columns;
-	int				j1;
-	int				j2;
+	enum e_players	j1;
+	enum e_players	j2;
 	int				scorej1;
 	int				scorej2;
 	enum e_result	res;
@@ -41,6 +47,7 @@ typedef struct	s_p4
 }					t_p4;
 
 int			game(t_p4 *p4);
+int			ai_plays(t_p4 *p4);
 int			check_valid_input(t_p4 *p4, int column);
 void		put_on_map(t_p4 *p4, int column);
 void		display_grid(t_p4 *p4);
