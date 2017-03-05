@@ -6,11 +6,18 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 20:42:25 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/05 06:55:38 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/05 22:07:17 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "puissance_4.h"
+
+void	get_lower(t_p4 *p4)
+{
+	p4->y = p4->lines - 1;
+	while (p4->y >= 0 && p4->grid[p4->y][p4->x] != ' ')
+		--p4->y;
+}
 
 void	put_on_map(t_p4 *p4, int column)
 {

@@ -6,18 +6,11 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 20:52:04 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/05 21:58:30 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/05 22:06:15 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "puissance_4.h"
-
-static void		get_lower(t_p4 *p4)
-{
-	p4->y = p4->lines - 1;
-	while (p4->y >= 0 && p4->grid[p4->y][p4->x] != ' ')
-		--p4->y;
-}
 
 static int		triple_threat3(t_p4 *p4, char c)
 {
@@ -56,7 +49,7 @@ static int		triple_threat2(t_p4 *p4, char c)
 		&& p4->grid[p4->y][p4->x - 2] == c && p4->grid[p4->y][p4->x - 3] == c)
 		|| (p4->y < p4->lines - 3 && p4->grid[p4->y + 1][p4->x] == c
 		&& p4->grid[p4->y + 2][p4->x] == c && p4->grid[p4->y + 3][p4->x] == c)
-		|| (p4->x < p4->columns - 3 && p4->y < p4->lines -3
+		|| (p4->x < p4->columns - 3 && p4->y < p4->lines - 3
 		&& p4->grid[p4->y + 1][p4->x + 1] == c
 		&& p4->grid[p4->y + 2][p4->x + 2] == c
 		&& p4->grid[p4->y + 3][p4->x + 3] == c)

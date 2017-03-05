@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 22:47:23 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/05 20:52:56 by agautier         ###   ########.fr       */
+/*   Updated: 2017/03/05 22:06:44 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ void				display_grid(t_p4 *p4);
 void				check_end_game(t_p4 *p4);
 void				display_score(t_p4 *p4);
 void				clear_grid(t_p4 *p4);
+void				get_lower(t_p4 *p4);
 
 #endif
