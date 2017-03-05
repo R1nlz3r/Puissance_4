@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 20:52:04 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/05 21:45:21 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/05 21:58:30 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ static void		get_lower(t_p4 *p4)
 
 static int		triple_threat3(t_p4 *p4, char c)
 {
-	if ((p4->x > 2 && p4->y > 2 && p4->grid[p4->y - 1][p4->x - 1] == c
-		&& p4->grid[p4->y - 2][p4->x - 2] == c
-		&& p4->grid[p4->y - 3][p4->x - 3] == c)
-		|| (p4->x < p4->columns - 2 && p4->x > 0
+	if ((p4->x < p4->columns - 2 && p4->x > 0
 		&& p4->grid[p4->y][p4->x + 1] == c && p4->grid[p4->y][p4->x + 2] == c
 		&& p4->grid[p4->y][p4->x - 1] == c)
 		|| (p4->x < p4->columns - 1 && p4->x > 1
@@ -70,7 +67,10 @@ static int		triple_threat2(t_p4 *p4, char c)
 		|| (p4->x < p4->columns - 3 && p4->y > 2
 		&& p4->grid[p4->y - 1][p4->x + 1] == c
 		&& p4->grid[p4->y - 2][p4->x + 2] == c
-		&& p4->grid[p4->y - 3][p4->x + 3] == c))
+		&& p4->grid[p4->y - 3][p4->x + 3] == c)
+		|| (p4->x > 2 && p4->y > 2 && p4->grid[p4->y - 1][p4->x - 1] == c
+		&& p4->grid[p4->y - 2][p4->x - 2] == c
+		&& p4->grid[p4->y - 3][p4->x - 3] == c))
 		return (1);
 	else if (triple_threat3(p4, c))
 		return (1);
