@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 15:55:52 by mapandel          #+#    #+#             */
-/*   Updated: 2017/03/05 10:49:07 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/03/05 20:26:44 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static int		rerun(t_p4 *p4)
 {
 	char	*buf;
 
+	if ((p4->scorej1 == 99 || p4->scorej2 == 99) && !(p4->rerun = 0))
+		return (0);
 	buf = ft_strnew(1000000);
 	ft_putendl("\n> Rejouer? 1: Oui. 2: Non.");
 	if (read(0, buf, 1000000) == -1)
@@ -27,10 +29,9 @@ static int		rerun(t_p4 *p4)
 		if (read(0, buf, 1000000) == -1 || buf[999999])
 			return (-1);
 	}
+	p4->rerun = 0;
 	if (ft_atoi(buf) == 1)
 		p4->rerun = 1;
-	else
-		p4->rerun = 0;
 	clear_grid(p4);
 	ft_strdel(&buf);
 	return (0);
@@ -83,8 +84,10 @@ int		game(t_p4 *p4)
 		while (p4->res == J1_PLAYING || p4->res == J2_PLAYING)
 		{
 			display_grid(p4);
-			if (j_plays(p4) == -1)
+			if (((p4->res == J1_PLAYING && p4->j1 == HUMAN) || (p4->res == J2_PLAYING && p4->j2 == HUMAN)) && j_plays(p4) == -1)
 				return (-1);
+			else if ((p4->res == J1_PLAYING && p4->j1 == AI) || (p4->res == J2_PLAYING && p4->j2 == AI))
+				put_on_map(p4, ai_plays(p4));
 			check_end_game(p4);
 			if (p4->res == J1_PLAYING)
 				p4->res = J2_PLAYING;
@@ -95,7 +98,6 @@ int		game(t_p4 *p4)
 		display_score(p4);
 		if (rerun(p4) == -1)
 			return (-1);
-		//hightlight le résultat
 	}
 	return (0);
 }
